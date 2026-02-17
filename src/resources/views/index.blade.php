@@ -23,7 +23,12 @@
                     <input type="name" name="last_name" value="{{old('last_name')}}" placeholder="例:太郎" />
                 </div>
                 <div class="form__error">
-                    <!--バリデーション機能を実装したら記述します。-->
+                    @error('first_name')
+                    {{$message}}
+                    @enderror
+                    @error('last_name')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>
@@ -35,16 +40,18 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <input type="radio" name="gender" value="男性"
-                        @checked(old('gender')== '男性' || !old('gender')) />男性
+                        @checked(old('gender')=='男性' || !old('gender')) />男性
 
                     <input type="radio" name="gender" value="女性"
-                        @checked(old('gender')== '女性' ) />女性
+                        @checked(old('gender')=='女性' ) />女性
 
                     <input type="radio" name="gender" value="その他"
-                        @checked(old('gender')== 'その他' ) />その他
+                        @checked(old('gender')=='その他' ) />その他
                 </div>
                 <div class="form__error">
-                    <!--バリデーション機能を実装したら記述します。-->
+                    @error('gender')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>
@@ -61,7 +68,9 @@
                         placeholder="test@example.com" />
                 </div>
                 <div class="form__error">
-                    <!--バリデーション機能を実装したら記述します。-->
+                    @error('email')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>
@@ -88,7 +97,15 @@
                         placeholder="5678" />
                 </div>
                 <div class="form__error">
-                    <!--バリデーション機能を実装したら記述します。-->
+                    @error('tel1')
+                    {{$message}}
+                    @enderror
+                    @error('tel2')
+                    {{$message}}
+                    @enderror
+                    @error('tel3')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>
@@ -105,7 +122,9 @@
                         placeholder="例:東京都渋谷区千駄ヶ谷123" />
                 </div>
                 <div class="form__error">
-                    <!--バリデーション機能を実装したら記述します。-->
+                    @error('address1')
+                    {{$message}}
+                    @enderror
                 </div>
             </div>
         </div>
@@ -136,8 +155,13 @@
                         <option value="商品の交換について" @selected(old('select_content')=='商品の交換について' )>商品の交換について</option>
                         <option value="商品トラブル" @selected(old('select_content')=='商品トラブル' )>商品トラブル</option>
                         <option value="ショップへのお問い合わせ" @selected(old('select_content')=='ショップへのお問い合わせ' )>ショップへのお問い合わせ</option>
-                        <option value="その他" @selected(old(' select_content')=='その他' )>その他</option>
+                        <option value="その他" @selected(old('select_content')=='その他' )>その他</option>
                     </select>
+                    <div class="form__error">
+                        @error('select_content')
+                        {{ $message }}
+                        @enderror
+                    </div>
                 </div>
             </div>
         </div>
@@ -149,6 +173,11 @@
             <div class="form__group-content">
                 <div class="form__input--textarea">
                     <textarea name="content" placeholder="お問い合わせ内容をご記載ください">{{ old('content')}}</textarea>
+                </div>
+                <div class="form__error">
+                    @error('content')
+                    {{ $message }}
+                    @enderror
                 </div>
             </div>
         </div>
