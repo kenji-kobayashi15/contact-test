@@ -19,8 +19,8 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="name" name="first_name" placeholder="例:山田" />
-                    <input type="name" name="last_name" placeholder="例:太郎" />
+                    <input type="name" name="first_name" value="{{old('first_name')}}" placeholder="例:山田" />
+                    <input type="name" name="last_name" value="{{old('last_name')}}" placeholder="例:太郎" />
                 </div>
                 <div class="form__error">
                     <!--バリデーション機能を実装したら記述します。-->
@@ -34,9 +34,14 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="radio" name="gender" value="男性" checked/>男性
-                    <input type="radio" name="gender" value="女性" />女性
-                    <input type="radio" name="gender" value="その他" />その他
+                    <input type="radio" name="gender" value="男性"
+                        @checked(old('gender')== '男性' || !old('gender')) />男性
+
+                    <input type="radio" name="gender" value="女性"
+                        @checked(old('gender')== '女性' ) />女性
+
+                    <input type="radio" name="gender" value="その他"
+                        @checked(old('gender')== 'その他' ) />その他
                 </div>
                 <div class="form__error">
                     <!--バリデーション機能を実装したら記述します。-->
@@ -50,7 +55,10 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="email" name="email" placeholder="test@example.com" />
+                    <input type="email"
+                        name="email"
+                        value="{{old('email')}}"
+                        placeholder="test@example.com" />
                 </div>
                 <div class="form__error">
                     <!--バリデーション機能を実装したら記述します。-->
@@ -64,11 +72,20 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="tel" name="tel1" placeholder="080" />
+                    <input type="tel"
+                        name="tel1"
+                        value="{{old('tel1')}}"
+                        placeholder="080" />
                     <span>-</span>
-                    <input type="tel" name="tel2" placeholder="1234" />
+                    <input type="tel"
+                        name="tel2"
+                        value="{{old('tel2')}}"
+                        placeholder="1234" />
                     <span>-</span>
-                    <input type="tel" name="tel3" placeholder="5678" />
+                    <input type="tel"
+                        name="tel3"
+                        value="{{old('tel3')}}"
+                        placeholder="5678" />
                 </div>
                 <div class="form__error">
                     <!--バリデーション機能を実装したら記述します。-->
@@ -82,7 +99,10 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address1" placeholder="例:東京都渋谷区千駄ヶ谷123" />
+                    <input type="text"
+                        name="address1"
+                        value="{{old('address1')}}"
+                        placeholder="例:東京都渋谷区千駄ヶ谷123" />
                 </div>
                 <div class="form__error">
                     <!--バリデーション機能を実装したら記述します。-->
@@ -95,7 +115,10 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="address2" placeholder="例:千駄ヶ谷マンション101" />
+                    <input type="text"
+                        name="address2"
+                        value="{{old('address2')}}"
+                        placeholder="例:千駄ヶ谷マンション101" />
                 </div>
             </div>
         </div>
@@ -106,12 +129,15 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
-                        <select name="select_content">
-                            <option value="こんにちは">こんにちは</option>
-                            <option value="さようなら">さよなら</option>
-                            <option value="幸せですか">幸せですか</option>
-                            <option value="なぞなぞです">なぞなぞです</option>
-                        </select>
+                    <select name="select_content">
+                        <option value="" hidden>選択してください</option>
+
+                        <option value="商品のお届けについて" @selected(old('select_content')=='商品のお届けについて' )>商品のお届けについて</option>
+                        <option value="商品の交換について" @selected(old('select_content')=='商品の交換について' )>商品の交換について</option>
+                        <option value="商品トラブル" @selected(old('select_content')=='商品トラブル' )>商品トラブル</option>
+                        <option value="ショップへのお問い合わせ" @selected(old('select_content')=='ショップへのお問い合わせ' )>ショップへのお問い合わせ</option>
+                        <option value="その他" @selected(old(' select_content')=='その他' )>その他</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -122,12 +148,12 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name="content" placeholder="お問い合わせ内容をご記載ください"></textarea>
+                    <textarea name="content" placeholder="お問い合わせ内容をご記載ください">{{ old('content')}}</textarea>
                 </div>
             </div>
         </div>
         <div class="form__button">
-            <button class="form__button-submit" type="submit">確認画面</button>
+            <button class="form__button--submit" type="submit">確認画面</button>
         </div>
     </form>
 </div>

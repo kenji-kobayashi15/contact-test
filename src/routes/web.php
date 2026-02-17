@@ -17,6 +17,6 @@ use App\Http\Controllers\ContactController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/', [ContactController::class, 'index']);
+Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/thanks', [ContactController::class,'store']);
