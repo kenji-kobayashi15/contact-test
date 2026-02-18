@@ -67,57 +67,67 @@
 {{-- 詳細表示モーダル --}}
 <div id="detailModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <table class="modal-table">
-            <tr>
-                <th>お名前</th>
-                <td><span id="modal-first-name"></span> <span id="modal-last-name"></span></td>
-            </tr>
-            <tr>
-                <th>性別</th>
-                <td><span id="modal-gender"></span></td>
-            </tr>
-            <tr>
-                <th>メールアドレス</th>
-                <td><span id="modal-email"></span></td>
-            </tr>
-            <tr>
-                <th>電話番号</th>
-                <td><span id="modal-tel"></span></td>
-            </tr>
-            <tr>
-                <th>住所</th>
-                <td><span id="modal-address"></span></td>
-            </tr>
-            <tr>
-                <th>建物名</th>
-                <td><span id="modal-building"></span></td>
-            </tr>
-            <tr>
-                <th>お問い合わせの種類</th>
-                <td><span id="modal-content-type"></span></td>
-            </tr>
-            <tr>
-                <th>お問い合わせ内容</th>
-                <td><span id="modal-detail-content"></span></td>
-            </tr>
-        </table>
+        <div class="modal-close">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+        </div>
+
+        <div class="modal-inner">
+            <table class="modal-table">
+                <tr>
+                    <th>お名前</th>
+                    <td><span id="modal-first-name"></span> <span id="modal-last-name"></span></td>
+                </tr>
+                <tr>
+                    <th>性別</th>
+                    <td><span id="modal-gender"></span></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><span id="modal-email"></span></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><span id="modal-tel"></span></td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td><span id="modal-address"></span></td>
+                </tr>
+                <tr>
+                    <th>建物名</th>
+                    <td><span id="modal-building"></span></td>
+                </tr>
+                <tr>
+                    <th>お問い合わせの種類</th>
+                    <td><span id="modal-content-type"></span></td>
+                </tr>
+                <tr>
+                    <th>お問い合わせ内容</th>
+                    <td><span id="modal-detail-content"></span></td>
+                </tr>
+            </table>
+
+            <form action="{{ route('admin.delete') }}" method="POST" class="delete-form">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="id" id="modal-id">
+                <button type="submit" class="delete-btn">削除</button>
+            </form>
+        </div>
     </div>
 </div>
 
 <script>
     function openModal(contact) {
-        // モーダルを表示
         document.getElementById('detailModal').style.display = 'block';
-
-        // 各項目に値を代入（要件にある全項目を網羅）
+        document.getElementById('modal-id').value = contact.id;
         document.getElementById('modal-first-name').innerText = contact.first_name;
         document.getElementById('modal-last-name').innerText = contact.last_name;
         document.getElementById('modal-gender').innerText = contact.gender;
         document.getElementById('modal-email').innerText = contact.email;
-        document.getElementById('modal-tel').innerText = contact.tel1 + contact.tel2 + contact.tel3;
+        document.getElementById('modal-tel').innerText = `${contact.tel1}${contact.tel2}${contact.tel3}`;
         document.getElementById('modal-address').innerText = contact.address1;
-        document.getElementById('modal-building').innerText = contact.address2 || ''; // 建物名は空の可能性があるため
+        document.getElementById('modal-building').innerText = contact.address2 || '';
         document.getElementById('modal-content-type').innerText = contact.select_content;
         document.getElementById('modal-detail-content').innerText = contact.content;
     }

@@ -19,7 +19,6 @@ class AdminController extends Controller
                 $q->where('first_name', 'like', '%' . $keyword . '%')
                     ->orWhere('last_name', 'like', '%' . $keyword . '%')
                     ->orWhere('email', 'like', '%' . $keyword . '%')
-
                     ->orWhereRaw('CONCAT(first_name, last_name) LIKE ?', ["%{$keyword}%"])
                     ->orWhere('email', 'like', '%' . $keyword . '%');
             });
@@ -51,6 +50,14 @@ class AdminController extends Controller
         return view('admin', compact('contacts'));
     }
 
+    public function destroy(Request $request)
+    {
+        // 送信されたIDに該当するデータを削除
+        \App\Models\Contact::find($request->id)->delete();
+
+        return redirect('/admin');
+    }
+
     // FN024: CSVエクスポート機能
     private function exportCsv($query)
     {
@@ -79,4 +86,6 @@ class AdminController extends Controller
 
         return $response;
     }
+
+
 }

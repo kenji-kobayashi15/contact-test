@@ -21,3 +21,4 @@ Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/thanks', [ContactController::class,'store']);
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+Route::delete('/admin/delete', [AdminController::class, 'destroy'])->name('admin.delete');
