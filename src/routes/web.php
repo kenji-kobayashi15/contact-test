@@ -21,4 +21,7 @@ Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/thanks', [ContactController::class,'store']);
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-Route::delete('/admin/delete', [AdminController::class, 'destroy'])->name('admin.delete');
+Route::get('/search', [AdminController::class, 'index'])->name('admin.search');
+Route::get('/reset', [AdminController::class, 'index'])->name('admin.reset');
+Route::delete('/delete', [AdminController::class, 'destroy'])->name('admin.delete');
+Route::get('/admin/export', [AdminController::class, 'export'])->name('admin.export');

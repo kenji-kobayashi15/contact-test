@@ -58,34 +58,64 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    // FN024: CSVエクスポート機能
-    private function exportCsv($query)
+    private function getSearchQuery(Request $request)
     {
-        $response = new StreamedResponse(function () use ($query) {
-            $handle = fopen('php://output', 'w');
-            fputcsv($handle, ['ID', 'お名前', '性別', 'メールアドレス', 'お問い合わせの種類', '内容', '作成日']);
+        $query = Contact::query();
 
-            $query->chunk(100, function ($contacts) use ($handle) {
-                foreach ($contacts as $contact) {
-                    fputcsv($handle, [
-                        $contact->id,
-                        $contact->first_name . $contact->last_name,
-                        $contact->gender,
-                        $contact->email,
-                        $contact->select_content,
-                        $contact->content,
-                        $contact->created_at,
-                    ]);
-                }
+        if ($request->filled('keyword')) {
+            $key = $request->keyword;
+            $query->where(function ($q) use ($key) {
+                $q->where('first_name', 'like', "%{$key}%")
+                    ->orWhere('last_name', 'like', "%{$key}%")
+                    ->orWhere('email', 'like', "%{$key}%")
+                    ->orWhereRaw('CONCAT(first_name, last_name) LIKE ?', ["%{$key}%"]);
             });
+        }
+
+        if ($request->filled('gender') && $request->gender !== '全て') {
+            $query->where('gender', $request->gender);
+        }
+
+        if ($request->filled('select_content')) {
+            $query->where('select_content', $request->select_content);
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->date);
+        }
+
+        return $query;
+    }
+
+    public function export(Request $request)
+    {
+        $query = $this->getSearchQuery($request);
+        $contacts = $query->get(); // 検索結果を全件取得
+
+        $response = new StreamedResponse(function () use ($contacts) {
+            $handle = fopen('php://output', 'w');
+
+            // CSVのヘッダー（要件に合わせて調整）
+            fputcsv($handle, ['お名前', '性別', 'メールアドレス', 'お問い合わせの種類', 'お問い合わせ内容']);
+
+            foreach ($contacts as $contact) {
+                fputcsv($handle, [
+                    $contact->first_name . ' ' . $contact->last_name,
+                    $contact->gender,
+                    $contact->email,
+                    $contact->select_content,
+                    $contact->content,
+                ]);
+            }
             fclose($handle);
         }, 200, [
             'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="contacts_' . date('Ymd') . '.csv"',
+            'Content-Disposition' => 'attachment; filename="contacts_' . now()->format('YmdHis') . '.csv"',
         ]);
 
         return $response;
     }
-
-
 }
+
+
+

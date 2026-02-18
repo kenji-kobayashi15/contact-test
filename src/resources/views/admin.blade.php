@@ -7,7 +7,7 @@
 @section('content')
 <div class="admin-title">Admin</div>
 
-<form action="{{ route('admin.index') }}" method="get" class="search-form">
+<form action="{{ route('admin.search') }}" method="get" class="search-form">
     <input type="text" name="keyword" class="search-input" placeholder="名前やメールアドレス" value="{{ request('keyword') }}">
 
     <select name="gender" class="search-select">
@@ -28,17 +28,20 @@
     <input type="date" name="date" class="search-input" value="{{ request('date') }}">
 
     <button type="submit" class="search-btn">検索</button>
-    <a href="{{ route('admin.index') }}" class="reset-btn">リセット</a>
+    <a href="{{ route('admin.reset') }}" class="reset-btn">リセット</a>
 
     {{-- エクスポートボタン --}}
-    <button type="submit" name="export" class="export-btn" style="background:#d9c6b0; color:#fff; border:none; padding:10px;">エクスポート</button>
+    <a href="{{ route('admin.export', request()->query()) }}" class="export-btn">
+        エクスポート
+    </a>
 </form>
 
 {{-- テーブル部分 --}}
+<div class="pagination">
+    {{ $contacts->links() }}
+</div>
 <table class="admin-table">
-    <div class="pagination">
-        {{ $contacts->links() }}
-    </div>
+
     <thead>
         <tr>
             <th>お名前</th>

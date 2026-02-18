@@ -222,3 +222,16 @@ body {
     background-color: #8b7969;
     color: #fff;
 }
+
+.export-btn {
+    background-color: #e2d5c5;
+    color: #8b7969;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 2px;
+    font-size: 14px;
+    display: inline-block;
+}
+.export-btn:hover {
+    background-color: #d4c4b2;
+}
