@@ -1,0 +1,177 @@
+/* public/css/admin.css */
+
+/* 全体設定 */
+body {
+    margin: 0;
+    font-family: 'serif';
+    background-color: #fff;
+    color: #8b7969;
+}
+
+.admin-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 30px 0;
+    font-weight: bold;
+}
+
+/* 検索フォーム */
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    color: #333;
+    width: 250px;
+}
+
+.search-select {
+    padding: 10px;
+    border: 1px solid #ddd;
+    color: #8b7969;
+    background-color: #fff;
+}
+
+.search-btn {
+    background: #8b7969;
+    color: #fff;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+}
+
+.reset-btn {
+    background: #f4f4f4;
+    color: #8b7969;
+    border: none;
+    padding: 10px 30px;
+    cursor: pointer;
+    text-decoration: none;
+    line-height: 1.5;
+}
+
+/* テーブル */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.admin-table th {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+}
+
+.admin-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #8b7969;
+}
+
+.detail-btn {
+    border: 1px solid #eee;
+    background: #fff;
+    color: #d9c6b0;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+/* ページネーションを右上に配置 */
+.pagination-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* Laravel Paginator (Bootstrap) の調整 */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.page-item {
+    border: 1px solid #ddd;
+    margin-left: -1px;
+}
+
+.page-item .page-link {
+    display: block;
+    padding: 5px 12px;
+    text-decoration: none;
+    color: #8b7969;
+}
+
+.page-item.active .page-link {
+    background-color: #8b7969;
+    color: #fff;
+}
+
+/* テーブルのhover機能 */
+.admin-table tr:hover {
+    background-color: #f9f4ef; /* ほんのり色が変わる */
+    transition: background-color 0.3s;
+}
+
+/* FN023: モーダル用の簡易スタイル */
+.modal {
+    display: none; /* JSで切り替え */
+    position: fixed;
+    z-index: 100;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 30px;
+    width: 50%;
+    border-radius: 5px;
+    position: relative;
+}
+.close-btn {
+    position: absolute;
+    right: 20px; top: 10px;
+    font-size: 24px; cursor: pointer;
+}
+
+/* ページネーションを右上に配置 */
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+/* 数字のリストのデザインをリセット */
+.pagination ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    border: 1px solid #ddd;
+    margin-left: -1px; /* 枠線を重ねる */
+}
+
+.pagination li a, .pagination li span {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #8b7969;
+}
+
+.pagination li.active span {
+    background-color: #8b7969;
+    color: #fff;
+}

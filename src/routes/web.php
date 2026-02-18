@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,4 @@ Route::get('/', function () {
 Route::get('/', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
 Route::post('/contacts/thanks', [ContactController::class,'store']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
