@@ -1,0 +1,126 @@
+/* public/css/common.css */
+
+.header {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+}
+
+.header__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header__logo {
+    margin: 0 auto; 
+}
+
+.header__logo h1 {
+    font-family: 'serif';
+    font-size: 26px;
+    color: #8b7969;
+    text-decoration: none;
+    margin: 0;
+    font-weight: bold;
+}
+
+.header-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.header-btn {
+    display: inline-block;
+    background-color: #f4f4f4;
+    color: #8b7969;
+    border: none;
+    padding: 8px 20px;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+body {
+    background-color: #f2eee9;
+}
+
+/* 中央の白いカード部分 */
+.register-form__content,
+.login-form__content {
+    margin: 50px auto;
+    padding: 40px 60px;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.register-form__heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-form__heading h2 {
+    font-size: 24px;
+    color: #8b7969;
+    font-weight: normal;
+}
+
+/* フォームの各項目 */
+.form__group {
+    margin-bottom: 20px;
+}
+
+.form__group-title {
+    margin-bottom: 8px;
+}
+
+.form__label--item {
+    font-size: 16px;
+    color: #8b7969;
+    font-weight: bold;
+}
+
+/* 入力欄のスタイル */
+.form__input--text input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background-color: #f4f4f4;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+/* エラーメッセージ */
+.form__error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+    min-height: 20px;
+}
+
+/* 登録ボタン */
+.form__button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.form__button-submit {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 10px 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+
+.form__button-submit:hover {
+    opacity: 0.8;
+}

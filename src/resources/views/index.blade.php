@@ -19,8 +19,8 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="name" name="first_name" value="{{old('first_name')}}" placeholder="例:山田" />
-                    <input type="name" name="last_name" value="{{old('last_name')}}" placeholder="例:太郎" />
+                    <input type="text" name="first_name" value="{{old('first_name')}}" placeholder="例:山田" />
+                    <input type="text" name="last_name" value="{{old('last_name')}}" placeholder="例:太郎" />
                 </div>
                 <div class="form__error">
                     @error('first_name')
@@ -96,16 +96,11 @@
                         value="{{old('tel3')}}"
                         placeholder="5678" />
                 </div>
+                {{-- 電話番号バリデーション --}}
                 <div class="form__error">
-                    @error('tel1')
-                    {{$message}}
-                    @enderror
-                    @error('tel2')
-                    {{$message}}
-                    @enderror
-                    @error('tel3')
-                    {{$message}}
-                    @enderror
+                    @if ($errors->has('tel1') || $errors->has('tel2') || $errors->has('tel3'))
+                    {{ $errors->first('tel1') ?: ($errors->first('tel2') ?: $errors->first('tel3')) }}
+                    @endif
                 </div>
             </div>
         </div>
@@ -128,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <div class="form_group">
+        <div class="form__group">
             <div class="form__group-title">
                 <span class="form__label--item">建物名</span>
             </div>

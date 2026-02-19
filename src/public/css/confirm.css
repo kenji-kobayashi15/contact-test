@@ -1,0 +1,103 @@
+/* コンテナ全体の調整 */
+.confirm__content {
+    margin: 0 auto;
+    padding: 60px 0;
+    max-width: 900px;
+}
+
+.confirm__heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.confirm__heading h2 {
+    font-size: 24px;
+    color: #8b7969;
+    font-weight: bold;
+}
+
+/* テーブル全体のスタイル */
+.confirm-table {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.confirm-table__inner {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.confirm-table__row {
+    border-bottom: 1px solid #e0dfde;
+}
+
+/* 左側のヘッダー列（ベージュ背景） */
+.confirm-table__header {
+    width: 30%;
+    background-color: #bfa694; /* 画像に基づいた落ち着いたベージュ */
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* 右側のデータ入力列 */
+.confirm-table__text {
+    width: 70%;
+    padding: 20px;
+    background-color: #fff;
+}
+
+/* inputタグを「ただのテキスト」に見せるためのスタイル */
+.confirm-table__text input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: auto;
+    font-size: 16px;
+    color: #333;
+    pointer-events: none; /* 入力不可を視覚以外でも徹底 */
+}
+
+/* 姓と名、電話番号の間に少し余白を作る */
+input[name="first_name"],
+input[name="tel1"],
+input[name="tel2"] {
+    margin-right: 10px;
+}
+
+/* ボタンエリア */
+.form__button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+/* 送信ボタン（茶色） */
+.form__button--submit {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 12px 60px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+
+/* 修正ボタン（リンク形式またはシンプルなテキスト） */
+.form__button--back {
+    background: none;
+    border: none;
+    color: #8b7969;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form__button--submit:hover,
+.form__button--back:hover {
+    opacity: 0.7;
+}

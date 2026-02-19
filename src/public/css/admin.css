@@ -7,6 +7,19 @@ body {
     color: #8b7969;
 }
 
+.admin-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.admin-sub-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+
 .admin-title {
     text-align: center;
     font-size: 24px;
@@ -58,6 +71,7 @@ body {
 /* テーブル */
 .admin-table {
     width: 100%;
+    margin: 0 auto;
     border-collapse: collapse;
     margin-top: 10px;
 }
@@ -81,21 +95,6 @@ body {
     color: #d9c6b0;
     padding: 5px 15px;
     cursor: pointer;
-}
-
-/* ページネーション */
-.pagination-wrapper {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-}
-
-/* Laravel Paginator (Bootstrap) の調整 */
-.pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .page-item {
@@ -192,18 +191,23 @@ body {
     font-size: 16px;
 }
 
-/* ページネーション */
 .pagination {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10px;
-}
-
-/* 数字のリストのデザインをリセット */
-.pagination ul {
     display: flex;
     list-style: none;
     padding: 0;
+    margin: 0;
+}
+
+.pagination ul {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.pagination-wrapper {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .pagination li {
@@ -232,6 +236,11 @@ body {
     font-size: 14px;
     display: inline-block;
 }
+
+.export-container {
+    text-align: left;
+}
+
 .export-btn:hover {
     background-color: #d4c4b2;
 }

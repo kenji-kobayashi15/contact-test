@@ -1,0 +1,107 @@
+/* お問い合わせフォーム全体のコンテナ */
+.contact-form__content {
+    margin: 0 auto;
+    padding: 60px 0;
+    max-width: 900px; /* 全体の幅を調整 */
+}
+
+.contact-form__heading {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.contact-form__heading h2 {
+    font-size: 24px;
+    color: #8b7969; /* サンプル画像の茶色系 */
+    font-weight: bold;
+}
+
+/* フォームの各行（ラベルと入力欄のセット） */
+.form__group {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+/* ラベル部分（左側） */
+.form__group-title {
+    width: 30%;
+    padding-top: 10px;
+}
+
+.form__label--item {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.form__label--required {
+    color: #ff0000;
+    margin-left: 5px;
+}
+
+/* 入力・エラー表示部分（右側） */
+.form__group-content {
+    width: 70%;
+}
+
+/* 入力欄の基本スタイル */
+.form__input--text input,
+.form__input--select select,
+.form__input--textarea textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0dfde;
+    background-color: #f4f4f4;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+/* お名前（姓・名）と電話番号の横並び調整 */
+.form__input--text {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.form__input--text span {
+    margin: 0 5px;
+}
+
+/* 性別ラジオボタンの調整 */
+.form__input--text input[type="radio"] {
+    width: auto;
+    margin-right: 5px;
+}
+
+/* お問い合わせ内容（テキストエリア） */
+.form__input--textarea textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* バリデーションエラーメッセージ（仕様書通り赤文字） */
+.form__error {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 5px;
+    min-height: 18px; /* エラーがない時も高さを確保してガタつき防止 */
+}
+
+/* 確認画面ボタン */
+.form__button {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.form__button--submit {
+    background-color: #8b7969;
+    color: #fff;
+    padding: 15px 60px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: opacity 0.3s;
+}
+
+.form__button--submit:hover {
+    opacity: 0.8;
+}

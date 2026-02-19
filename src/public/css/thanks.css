@@ -1,0 +1,54 @@
+/* 画面全体を中央寄せにするための設定 */
+.thanks__content {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 画面いっぱいの高さ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* 背景に大きく表示する "Thank you" (疑似要素を使用) */
+.thanks__content::before {
+    content: "Thank you";
+    position: absolute;
+    font-size: 15vw; /* 画面幅に応じた巨大なサイズ */
+    font-weight: bold;
+    color: #f4f4f4; /* 非常に薄いグレー */
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 前面のコンテンツ（文字とボタン） */
+.thanks__heading,
+.thanks__button {
+    position: relative;
+    z-index: 2; /* 背景文字より前に出す */
+}
+
+.thanks__heading h2 {
+    font-size: 24px;
+    color: #8b7969; /* フォーム共通の茶色 */
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+/* HOMEボタンのスタイル */
+.thanks__button-link {
+    display: inline-block;
+    background-color: #8b7969;
+    color: #fff;
+    padding: 10px 40px;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 2px;
+    transition: opacity 0.3s;
+}
+
+.thanks__button-link:hover {
+    opacity: 0.8;
+}

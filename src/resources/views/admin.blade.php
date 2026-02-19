@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}"/>
 @endsection
 
 @section('content')
-<div class="admin-title">Admin</div>
+<div class="admin-wrapper">
+    <h2 class="admin-title">Admin</h2>
 
 <form action="{{ route('admin.search') }}" method="get" class="search-form">
     <input type="text" name="keyword" class="search-input" placeholder="名前やメールアドレス" value="{{ request('keyword') }}">
@@ -29,17 +30,19 @@
 
     <button type="submit" class="search-btn">検索</button>
     <a href="{{ route('admin.reset') }}" class="reset-btn">リセット</a>
-
-    {{-- エクスポートボタン --}}
-    <a href="{{ route('admin.export', request()->query()) }}" class="export-btn">
-        エクスポート
-    </a>
 </form>
+<div class="admin-sub-header">
+    {{-- 左側に配置 --}}
+    <div class="export-container">
+        <a href="..." class="export-btn">エクスポート</a>
+    </div>
 
-{{-- テーブル部分 --}}
-<div class="pagination">
-    {{ $contacts->links() }}
+    {{-- 右側に配置される --}}
+    <div class="pagination-wrapper">
+        {{ $contacts->links() }}
+    </div>
 </div>
+
 <table class="admin-table">
 
     <thead>
@@ -66,7 +69,7 @@
 
     </tbody>
 </table>
-
+</div>
 {{-- 詳細表示モーダル --}}
 <div id="detailModal" class="modal">
     <div class="modal-content">
