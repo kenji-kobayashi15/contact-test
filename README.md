@@ -30,3 +30,15 @@ docker-compose exec php php artisan db:seed
 ## データベース設計
 
 ![ER図](./er-contact-test.png)
+
+## URL
+- 開発環境
+- http//localhost/
+- http//localhost/contacts/confirm
+- http//localhost/contacts/thanks
+- http//localhost/register
+- http//localhost/login
+- http//localhost/admin
+- http//localhost/admin/search
+- http//localhost/admin/reset
+- http//localhost/admin/search
