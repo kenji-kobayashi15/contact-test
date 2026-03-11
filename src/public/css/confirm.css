@@ -54,7 +54,7 @@
     border: none;
     outline: none;
     background: transparent;
-    width: auto;
+    width: 100%;
     font-size: 16px;
     color: #333;
     pointer-events: none; /* 入力不可を視覚以外でも徹底 */
@@ -100,4 +100,13 @@ input[name="tel2"] {
 .form__button--submit:hover,
 .form__button--back:hover {
     opacity: 0.7;
+}
+
+.confirm-item__textarea {
+    display: block;
+    width: 100%;
+    white-space: pre-wrap; /* これが重要！入力された改行をそのまま反映させます */
+    word-break: break-all;
+    line-height: 1.6;
+    color: #333;
 }

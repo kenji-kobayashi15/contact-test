@@ -40,13 +40,13 @@
             <div class="form__group-content">
                 <div class="form__input--text">
                     <input type="radio" name="gender" value="男性"
-                        @checked(old('gender')=='男性' || !old('gender')) />男性
+                        {{ old('gender', '男性') == '男性' ? 'checked' : '' }} />男性
 
                     <input type="radio" name="gender" value="女性"
-                        @checked(old('gender')=='女性' ) />女性
+                        {{ old('gender') == '女性' ? 'checked' : '' }} />女性
 
                     <input type="radio" name="gender" value="その他"
-                        @checked(old('gender')=='その他' ) />その他
+                        {{ old('gender') == 'その他' ? 'checked' : '' }} />その他
                 </div>
                 <div class="form__error">
                     @error('gender')
@@ -143,14 +143,21 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
+
+                    {{-- いま old() に入っている文字の「長さ」と「中身」を厳密に表示します --}}
+                    <p style="color: red;">
+                        デバッグ詳細：var_dump結果 → {{ var_dump(old('select_content')) }}
+                    </p>
+
                     <select name="select_content">
                         <option value="" hidden>選択してください</option>
 
-                        <option value="商品のお届けについて" @selected(old('select_content')=='商品のお届けについて' )>商品のお届けについて</option>
-                        <option value="商品の交換について" @selected(old('select_content')=='商品の交換について' )>商品の交換について</option>
-                        <option value="商品トラブル" @selected(old('select_content')=='商品トラブル' )>商品トラブル</option>
-                        <option value="ショップへのお問い合わせ" @selected(old('select_content')=='ショップへのお問い合わせ' )>ショップへのお問い合わせ</option>
-                        <option value="その他" @selected(old('select_content')=='その他' )>その他</option>
+                        <option value="商品のお届けについて" @selected(old('select_content')=='商品のお届けについて')>商品のお届けについて</option>
+                        <option value="商品の交換について" @selected(old('select_content')=='商品の交換について')>商品の交換について</option>
+                        <option value="商品トラブル" @selected(old('select_content')=='商品トラブル')>商品トラブル</option>
+                        <option value="ショップへのお問い合わせ" @selected(old('select_content')=='ショップへのお問い合わせ')>ショップへのお問い合わせ</option>
+                        <option value="その他" @selected(old('select_content')=='その他')>その他</option>
+                    </select>
                     </select>
                     <div class="form__error">
                         @error('select_content')

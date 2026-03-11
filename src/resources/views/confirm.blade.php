@@ -43,7 +43,11 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">住所</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="address1" value="{{$contact['address1']}}" readonly />
+                        {{-- 1. 表示用：これなら文字数に合わせて自動で改行もされます --}}
+                        <span>{{ $contact['address1'] }}</span>
+
+                        {{-- 2. データ送信用：裏側で値を保持 --}}
+                        <input type="hidden" name="address1" value="{{ $contact['address1'] }}">
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -55,13 +59,20 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせの種類</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="select_content" value="{{$contact['select_content']}}" readonly />
+                        {{-- 1. ユーザーに見せるための表示（inputではなくテキストとして出す） --}}
+                        <span>{{ $contact['select_content'] }}</span>
+                        {{-- 2. コントローラーに送るためのデータ（hiddenで隠して送る） --}}
+                        <input type="hidden" name="select_content" value="{{$contact['select_content']}}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お問い合わせ内容</th>
                     <td class="confirm-table__text">
-                        <input type="textarea" name="content" value="{{$contact['content']}}" readonly />
+                        {{-- 表示用：改行を反映させるためのクラスを追加 --}}
+                        <span class="confirm-item__textarea">{{ $contact['content'] }}</span>
+
+                        {{-- 送信用 --}}
+                        <input type="hidden" name="content" value="{{ $contact['content'] }}">
                     </td>
                 </tr>
             </table>
