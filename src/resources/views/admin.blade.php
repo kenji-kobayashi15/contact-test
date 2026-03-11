@@ -1,74 +1,74 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}"/>
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}" />
 @endsection
 
 @section('content')
 <div class="admin-wrapper">
     <h2 class="admin-title">Admin</h2>
 
-<form action="{{ route('admin.search') }}" method="get" class="search-form">
-    <input type="text" name="keyword" class="search-input" placeholder="名前やメールアドレス" value="{{ request('keyword') }}">
+    <form action="{{ route('admin.search') }}" method="get" class="search-form">
+        <input type="text" name="keyword" class="search-input" placeholder="名前やメールアドレス" value="{{ request('keyword') }}">
 
-    <select name="gender" class="search-select">
-        <option value="全て">性別</option>
-        <option value="全て" @selected(request('gender')=='全て' )>全て</option>
-        <option value="男性" @selected(request('gender')=='男性' )>男性</option>
-        <option value="女性" @selected(request('gender')=='女性' )>女性</option>
-        <option value="その他" @selected(request('gender')=='その他' )>その他</option>
-    </select>
+        <select name="gender" class="search-select">
+            <option value="全て">性別</option>
+            <option value="全て" @selected(request('gender')=='全て' )>全て</option>
+            <option value="男性" @selected(request('gender')=='男性' )>男性</option>
+            <option value="女性" @selected(request('gender')=='女性' )>女性</option>
+            <option value="その他" @selected(request('gender')=='その他' )>その他</option>
+        </select>
 
-    <select name="select_content" class="search-select">
-        <option value="">お問い合わせの種類</option>
-        @foreach(['商品のお届けについて', '商品の交換について', '商品トラブル', 'ショップへのお問い合わせ', 'その他'] as $type)
-        <option value="{{ $type }}" @selected(request('select_content')==$type)>{{ $type }}</option>
-        @endforeach
-    </select>
+        <select name="select_content" class="search-select">
+            <option value="">お問い合わせの種類</option>
+            @foreach(['商品のお届けについて', '商品の交換について', '商品トラブル', 'ショップへのお問い合わせ', 'その他'] as $type)
+            <option value="{{ $type }}" @selected(request('select_content')==$type)>{{ $type }}</option>
+            @endforeach
+        </select>
 
-    <input type="date" name="date" class="search-input" value="{{ request('date') }}">
+        <input type="date" name="date" class="search-input" value="{{ request('date') }}">
 
-    <button type="submit" class="search-btn">検索</button>
-    <a href="{{ route('admin.reset') }}" class="reset-btn">リセット</a>
-</form>
-<div class="admin-sub-header">
-    {{-- 左側に配置 --}}
-    <div class="export-container">
-        <a href="..." class="export-btn">エクスポート</a>
+        <button type="submit" class="search-btn">検索</button>
+        <a href="{{ route('admin.reset') }}" class="reset-btn">リセット</a>
+    </form>
+    <div class="admin-sub-header">
+        {{-- 左側に配置 --}}
+        <div class="export-container">
+            <a href="{{ route('admin.export', request()->query()) }}" class="export-btn">エクスポート</a>
+        </div>
+
+        {{-- 右側に配置される --}}
+        <div class="pagination-wrapper">
+            {{ $contacts->links() }}
+        </div>
     </div>
 
-    {{-- 右側に配置される --}}
-    <div class="pagination-wrapper">
-        {{ $contacts->links() }}
-    </div>
-</div>
+    <table class="admin-table">
 
-<table class="admin-table">
+        <thead>
+            <tr>
+                <th>お名前</th>
+                <th>性別</th>
+                <th>メールアドレス</th>
+                <th>お問い合わせの種類</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($contacts as $contact)
+            <tr>
+                <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
+                <td>{{ $contact->gender }}</td>
+                <td>{{ $contact->email }}</td>
+                <td>{{ $contact->select_content }}</td>
+                <td>
+                    <button class="detail-btn" onclick='openModal(@json($contact))'>詳細</button>
+                </td>
+            </tr>
+            @endforeach
 
-    <thead>
-        <tr>
-            <th>お名前</th>
-            <th>性別</th>
-            <th>メールアドレス</th>
-            <th>お問い合わせの種類</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($contacts as $contact)
-        <tr>
-            <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
-            <td>{{ $contact->gender }}</td>
-            <td>{{ $contact->email }}</td>
-            <td>{{ $contact->select_content }}</td>
-            <td>
-                <button class="detail-btn" onclick='openModal(@json($contact))'>詳細</button>
-            </td>
-        </tr>
-        @endforeach
-
-    </tbody>
-</table>
+        </tbody>
+    </table>
 </div>
 {{-- 詳細表示モーダル --}}
 <div id="detailModal" class="modal">

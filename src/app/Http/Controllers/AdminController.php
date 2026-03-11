@@ -95,6 +95,9 @@ class AdminController extends Controller
         $response = new StreamedResponse(function () use ($contacts) {
             $handle = fopen('php://output', 'w');
 
+            // Excelでの文字化け防止（BOMを出力）
+            fwrite($handle, "\xEF\xBB\xBF");
+
             // CSVのヘッダー（要件に合わせて調整）
             fputcsv($handle, ['お名前', '性別', 'メールアドレス', 'お問い合わせの種類', 'お問い合わせ内容']);
 
@@ -116,6 +119,3 @@ class AdminController extends Controller
         return $response;
     }
 }
-
-
-
