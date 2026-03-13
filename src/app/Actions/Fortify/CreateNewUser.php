@@ -26,21 +26,21 @@ class CreateNewUser implements CreatesNewUsers
                 'string',
                 'email',
                 'max:255',
-                \Illuminate\Validation\Rule::unique(\App\Models\User::class),
+                Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-            [
+        ],[
                 'name.required' => 'お名前を入力してください',
                 'email.required' => 'メールアドレスを入力してください',
                 'email.email' => 'メールアドレスはメール形式で入力してください',
+                'email.unique' => 'このメールアドレスは既に登録されています',
                 'password.required' => 'パスワードを入力してください',
-            ]
-        ])->validate();
+            ])->validate();
 
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'password' => \Illuminate\Support\Facades\Hash::make($input['password']),
+            'password' => Hash::make($input['password']),
         ]);
     }
 }

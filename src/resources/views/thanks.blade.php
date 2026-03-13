@@ -11,7 +11,7 @@
 <body>
     <div class="thanks__content">
         <div class="thanks__heading">
-            <h2>お問い合わせありがとうございます</h2>
+            <h1>お問い合わせありがとうございます</h1>
         </div>
 
         <div class="thanks__button">

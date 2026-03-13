@@ -8,7 +8,7 @@
 
 <div class="contact-form__content">
     <div class="contact-form__heading">
-        <h2>Contact</h2>
+        <h1>Contact</h1>
     </div>
     <form class="form" action="/contacts/confirm" method="post">
         @csrf
@@ -19,8 +19,8 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="text" name="first_name" value="{{old('first_name')}}" placeholder="例:山田" />
-                    <input type="text" name="last_name" value="{{old('last_name')}}" placeholder="例:太郎" />
+                    <input type="text" name="first_name" class="form__input" value="{{ old('first_name') }}" placeholder="例:山田" />
+                    <input type="text" name="last_name" class="form__input" value="{{ old('last_name') }}" placeholder="例:太郎" />
                 </div>
                 <div class="form__error">
                     @error('first_name')
@@ -39,13 +39,13 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--text">
-                    <input type="radio" name="gender" value="男性"
+                    <input type="radio" name="gender" class="form__input" value="男性"
                         {{ old('gender', '男性') == '男性' ? 'checked' : '' }} />男性
 
-                    <input type="radio" name="gender" value="女性"
+                    <input type="radio" name="gender" class="form__input" value="女性"
                         {{ old('gender') == '女性' ? 'checked' : '' }} />女性
 
-                    <input type="radio" name="gender" value="その他"
+                    <input type="radio" name="gender" class="form__input" value="その他"
                         {{ old('gender') == 'その他' ? 'checked' : '' }} />その他
                 </div>
                 <div class="form__error">
@@ -64,6 +64,7 @@
                 <div class="form__input--text">
                     <input type="email"
                         name="email"
+                        class="form__input"
                         value="{{old('email')}}"
                         placeholder="test@example.com" />
                 </div>
@@ -83,16 +84,19 @@
                 <div class="form__input--text">
                     <input type="tel"
                         name="tel1"
+                        class="form__input"
                         value="{{old('tel1')}}"
                         placeholder="080" />
                     <span>-</span>
                     <input type="tel"
                         name="tel2"
+                        class="form__input"
                         value="{{old('tel2')}}"
                         placeholder="1234" />
                     <span>-</span>
                     <input type="tel"
                         name="tel3"
+                        class="form__input"
                         value="{{old('tel3')}}"
                         placeholder="5678" />
                 </div>
@@ -113,6 +117,7 @@
                 <div class="form__input--text">
                     <input type="text"
                         name="address1"
+                        class="form__input"
                         value="{{old('address1')}}"
                         placeholder="例:東京都渋谷区千駄ヶ谷123" />
                 </div>
@@ -131,6 +136,7 @@
                 <div class="form__input--text">
                     <input type="text"
                         name="address2"
+                        class="form__input"
                         value="{{old('address2')}}"
                         placeholder="例:千駄ヶ谷マンション101" />
                 </div>
@@ -143,21 +149,13 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--select">
-
-                    {{-- いま old() に入っている文字の「長さ」と「中身」を厳密に表示します --}}
-                    <p style="color: red;">
-                        デバッグ詳細：var_dump結果 → {{ var_dump(old('select_content')) }}
-                    </p>
-
                     <select name="select_content">
                         <option value="" hidden>選択してください</option>
-
-                        <option value="商品のお届けについて" @selected(old('select_content')=='商品のお届けについて')>商品のお届けについて</option>
-                        <option value="商品の交換について" @selected(old('select_content')=='商品の交換について')>商品の交換について</option>
-                        <option value="商品トラブル" @selected(old('select_content')=='商品トラブル')>商品トラブル</option>
-                        <option value="ショップへのお問い合わせ" @selected(old('select_content')=='ショップへのお問い合わせ')>ショップへのお問い合わせ</option>
-                        <option value="その他" @selected(old('select_content')=='その他')>その他</option>
-                    </select>
+                        <option value="商品のお届けについて" {{ old('select_content') == '商品のお届けについて' ? 'selected' : '' }}>商品のお届けについて</option>
+                        <option value="商品の交換について" {{ old('select_content') == '商品の交換について' ? 'selected' : '' }}>商品の交換について</option>
+                        <option value="商品トラブル" {{ old('select_content') == '商品トラブル' ? 'selected' : '' }}>商品トラブル</option>
+                        <option value="ショップへのお問い合わせ" {{ old('select_content') == 'ショップへのお問い合わせ' ? 'selected' : '' }}>ショップへのお問い合わせ</option>
+                        <option value="その他" {{ old('select_content') == 'その他' ? 'selected' : '' }}>その他</option>
                     </select>
                     <div class="form__error">
                         @error('select_content')
@@ -174,7 +172,7 @@
             </div>
             <div class="form__group-content">
                 <div class="form__input--textarea">
-                    <textarea name="content" placeholder="お問い合わせ内容をご記載ください">{{ old('content')}}</textarea>
+                    <textarea name="content" class="form__input" placeholder="お問い合わせ内容をご記載ください">{{ old('content') }}</textarea>
                 </div>
                 <div class="form__error">
                     @error('content')

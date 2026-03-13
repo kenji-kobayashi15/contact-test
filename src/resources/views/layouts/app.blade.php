@@ -15,7 +15,7 @@
     <header class="header">
         <div class="header__inner">
             <div class="header__logo">
-                <h1>FashionablyLate</h1>
+                <p class="header__logo-text">FashionablyLate</p>
             </div>
                 <nav>
                     <ul class="header-nav">

@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="admin-wrapper">
-    <h2 class="admin-title">Admin</h2>
+    <h1 class="admin-title">Admin</h1>
 
     <form action="{{ route('admin.search') }}" method="get" class="search-form">
         <input type="text" name="keyword" class="search-input" placeholder="名前やメールアドレス" value="{{ request('keyword') }}">

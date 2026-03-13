@@ -20,13 +20,14 @@
     margin: 0 auto; 
 }
 
-.header__logo h1 {
+.header__logo-text {
     font-family: 'serif';
     font-size: 26px;
     color: #8b7969;
     text-decoration: none;
     margin: 0;
     font-weight: bold;
+    display:block;
 }
 
 .header-nav {
@@ -48,6 +49,7 @@
 
 body {
     background-color: #f2eee9;
+    color: #333;
 }
 
 /* 中央の白いカード部分 */
@@ -66,10 +68,12 @@ body {
     margin-bottom: 30px;
 }
 
-.register-form__heading h2 {
+.register-form__heading h1,
+.login-form__heading h1 {
     font-size: 24px;
     color: #8b7969;
     font-weight: normal;
+    text-align: center;
 }
 
 /* フォームの各項目 */
@@ -88,7 +92,7 @@ body {
 }
 
 /* 入力欄のスタイル */
-.form__input--text input {
+.form__input {
     width: 100%;
     padding: 12px;
     border: none;

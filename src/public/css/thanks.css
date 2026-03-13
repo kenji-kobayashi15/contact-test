@@ -30,7 +30,7 @@
     z-index: 2; /* 背景文字より前に出す */
 }
 
-.thanks__heading h2 {
+.thanks__heading h1 {
     font-size: 24px;
     color: #8b7969; /* フォーム共通の茶色 */
     margin-bottom: 30px;

@@ -19,7 +19,7 @@ class ContactController extends Controller
         return view('confirm', ['contact' => $contact]);
     }
 
-    public function store(ContactRequest $request)
+    public function store(Request $request)
     {
         if($request->input('action') === 'back'){
             return redirect()->route('contact.index')->withInput();

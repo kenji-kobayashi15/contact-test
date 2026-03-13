@@ -10,7 +10,7 @@
     margin-bottom: 50px;
 }
 
-.contact-form__heading h2 {
+.contact-form__heading h1 {
     font-size: 24px;
     color: #8b7969; /* サンプル画像の茶色系 */
     font-weight: bold;
@@ -44,9 +44,7 @@
 }
 
 /* 入力欄の基本スタイル */
-.form__input--text input,
-.form__input--select select,
-.form__input--textarea textarea {
+.form__input {
     width: 100%;
     padding: 10px;
     border: 1px solid #e0dfde;

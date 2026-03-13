@@ -7,7 +7,7 @@
 @section('content')
 <div class="confirm__content">
     <div class="confirm__heading">
-        <h2>お問い合わせ内容確認</h2>
+        <h1>Confirm</h1>
     </div>
     <form class="form" action="/contacts/thanks" method="post">
         @csrf
@@ -16,28 +16,32 @@
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">お名前</th>
                     <td class="confirm-table__text">
-                        <input type="name" name="first_name" value="{{$contact['first_name']}}" readonly />
-                        <input type="name" name="last_name" value="{{$contact['last_name']}}" readonly />
+                        <span>{{ $contact['first_name'] }} {{ $contact['last_name'] }}</span>
+                        <input type="hidden" name="first_name" class="form__input" value="{{ $contact['first_name'] }}" />
+                        <input type="hidden" name="last_name" class="form__input" value="{{ $contact['last_name'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">性別</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="gender" value="{{$contact['gender']}}" readonly />
+                        <span>{{ $contact['gender'] }}</span>
+                        <input type="hidden" name="gender" class="form__input" value="{{ $contact['gender'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">メールアドレス</th>
                     <td class="confirm-table__text">
-                        <input type="email" name="email" value="{{$contact['email']}}" readonly />
+                        <span>{{ $contact['email'] }}</span>
+                        <input type="hidden" name="email" class="form__input" value="{{ $contact['email'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">電話番号</th>
                     <td class="confirm-table__text">
-                        <input type="tel" name="tel1" value="{{$contact['tel1']}}" readonly />
-                        <input type="tel" name="tel2" value="{{$contact['tel2']}}" readonly />
-                        <input type="tel" name="tel3" value="{{$contact['tel3']}}" readonly />
+                        <span>{{ $contact['tel1'] }}{{ $contact['tel2'] }}{{ $contact['tel3'] }}</span>
+                        <input type="hidden" name="tel1" class="form__input" value="{{ $contact['tel1'] }}" readonly />
+                        <input type="hidden" name="tel2" class="form__input" value="{{ $contact['tel2'] }}" readonly />
+                        <input type="hidden" name="tel3" class="form__input" value="{{ $contact['tel3'] }}" readonly />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -47,13 +51,14 @@
                         <span>{{ $contact['address1'] }}</span>
 
                         {{-- 2. データ送信用：裏側で値を保持 --}}
-                        <input type="hidden" name="address1" value="{{ $contact['address1'] }}">
+                        <input type="hidden" name="address1" class="form__input" value="{{ $contact['address1'] }}">
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
                     <th class="confirm-table__header">建物名</th>
                     <td class="confirm-table__text">
-                        <input type="text" name="address2" value="{{$contact['address2']}}" readonly />
+                        <span>{{ $contact['address2'] }}</span>
+                        <input type="hidden" name="address2" class="form__input" value="{{ $contact['address2'] }}" readonly />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -62,7 +67,7 @@
                         {{-- 1. ユーザーに見せるための表示（inputではなくテキストとして出す） --}}
                         <span>{{ $contact['select_content'] }}</span>
                         {{-- 2. コントローラーに送るためのデータ（hiddenで隠して送る） --}}
-                        <input type="hidden" name="select_content" value="{{$contact['select_content']}}" />
+                        <input type="hidden" name="select_content" class="form__input" value="{{ $contact['select_content'] }}" />
                     </td>
                 </tr>
                 <tr class="confirm-table__row">
@@ -72,7 +77,7 @@
                         <span class="confirm-item__textarea">{{ $contact['content'] }}</span>
 
                         {{-- 送信用 --}}
-                        <input type="hidden" name="content" value="{{ $contact['content'] }}">
+                        <input type="hidden" name="content" class="form__input" value="{{ $contact['content'] }}">
                     </td>
                 </tr>
             </table>
